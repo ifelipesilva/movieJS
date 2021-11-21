@@ -1,0 +1,41 @@
+import fetch from 'isomorphic-unfetch'
+
+
+function MoviesPage({movies}){
+  
+  <div className="container">
+
+    <ul>
+
+    {movies.map(movie => (
+                    <li key={movie.id}>
+                        <h3>{movie.movie_title}</h3>
+                    </li>
+                ))}
+
+    </ul>
+
+  </div>
+
+
+
+}
+
+
+export async function getServerSideProps(){
+  const API = process.env.API_KEY;
+
+ 
+  const res = await fetch(`${API}/movies`)
+  const data = await res.json()
+
+  return {
+    props: {
+      movies: data
+    }
+  }
+}
+
+
+
+export default MoviesPage

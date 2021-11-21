@@ -358,9 +358,7 @@ const GlobalStyles = () => (
                 cursor: pointer;
             }
 
-            img {
-                width: 100%;
-            }
+          
 
             .container {
                 max-width: 960px;
