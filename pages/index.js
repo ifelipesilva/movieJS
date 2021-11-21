@@ -6,8 +6,8 @@ export default function Home({movies}){
   return (
     <div className="container" >
      
-        <h2 className="text-white text-4xl">Latest Movies</h2>
-          <div className="grid  md:grid-cols-3 gap-4 col-span-full">
+        <h2 className="text-white text-4xl font-bold">Latest Movies</h2>
+          <div className="grid  md:grid-cols-3 gap-4 col-span-full mb-64">
               {movies.map(movie => (
                   <div key={movie.id} className="w-full md:w-auto">
                       <Card movie={movie} />

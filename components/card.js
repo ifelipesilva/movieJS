@@ -1,4 +1,5 @@
 import styled from '@emotion/styled'
+import Link from 'next/link'
 
 
 function Card ({movie}){
@@ -12,6 +13,10 @@ function Card ({movie}){
          <h3>{movie.title}</h3>
 
          <p dangerouslySetInnerHTML={{__html: movie.description}}/>
+
+         <Link href="/movies/[genre]/[slug]" as={`/movies/${movie.genre.slug}/${movie.slug}`}>
+            <a> More about this movie</a>
+         </Link>
       </div>
     </CardStyled>
   )
@@ -41,6 +46,22 @@ const CardStyled = styled.div`
      color: #7D7885;
      line-height: 1.5;
    }
+
+   a {
+     display: inline-block;
+     margin: 20px 0;
+     background: #385db0;
+     padding: 1rem 2rem;
+     color: #fff;
+     font-weight: normal;
+     border-radius: 4px;
+
+     &:hover{
+       background-color: #f9bd44;
+       color: #1F1A36;
+     }
+   }
+
  }
 
 
