@@ -1,9 +1,21 @@
 import styled from "@emotion/styled";
+import Link from 'next/link'
+import { useRouter } from 'next/router'
 
-function Navigation(){
+function Navigation({navigation}){
+  const router = useRouter()
+  console.log(router)
   return (
     <NavigationStyled>
-      nav
+      <ul>
+        {navigation.map(item => (
+          <li key={item.id}>
+            <Link href={item.slug}>
+              <a className={router.pathname === item.slug ? 'active' : ''}>{item.title}</a>
+            </Link>
+          </li>
+        ))}
+      </ul>
     </NavigationStyled>
   )
 }
@@ -19,9 +31,21 @@ const NavigationStyled = styled.div`
   }
 
   li {
-    margin-left: 10px;
+    margin-left: 20px;
   }
 
+  a{
+    color: #fff;
+
+    &:hover {
+     color: #385db0;
+     transition: .1s;
+    }
+
+    &.active {
+      color: #385db0;
+    }
+  }
 
 
 `

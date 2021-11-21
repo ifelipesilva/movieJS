@@ -6,11 +6,11 @@ require('dotenv').config({path: './.env.local'})
 module.exports = {
    
     env: {
-      API_KEY: process.env.API_KEY,
+        API_KEY: process.env.API_KEY,
         IMAGES_DOMAIN: process.env.IMAGES_DOMAIN
     },
     publicRuntimeConfig: {
-        API_URL: process.env.API_URL,
+        API_KEY: process.env.API_KEY,
         IMAGES_DOMAIN: process.env.IMAGES_DOMAIN
     },
 
