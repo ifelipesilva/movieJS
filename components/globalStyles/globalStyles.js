@@ -11,6 +11,7 @@ const GlobalStyles = () => (
 
             body {
                 margin: 0;
+                background: #1e172e;
             }
 
             article,
@@ -355,6 +356,10 @@ const GlobalStyles = () => (
             button,
             [role=button] {
                 cursor: pointer;
+            }
+
+            img {
+                width: 100%;
             }
 
             .container {

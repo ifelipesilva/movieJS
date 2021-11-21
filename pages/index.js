@@ -1,14 +1,20 @@
 import fetch from 'isomorphic-unfetch'
 import Card from '../components/card';
 
-
-export default function Home({movies}) {
-  console.log(movies)
+export default function Home({movies}){
+  
   return (
-    <div className="container">
-        {movies.map(movie => (
-         <Card key={movie.id}  movie={movie} />         
-       ))}
+    <div className="container" >
+     
+        <h2 className="text-white text-4xl">Latest Movies</h2>
+          <div className="grid  md:grid-cols-3 gap-4 col-span-full">
+              {movies.map(movie => (
+                  <div key={movie.id} className="w-full md:w-auto">
+                      <Card movie={movie} />
+                  </div>
+              ))}
+          </div>
+       
     </div>
   )
 }

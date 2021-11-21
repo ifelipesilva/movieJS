@@ -14,6 +14,10 @@ module.exports = {
         IMAGES_DOMAIN: process.env.IMAGES_DOMAIN
     },
 
+    plugins: {
+        tailwindcss: {},
+        autoprefixer: {},
+      },
   
 
     webpack: config => {

@@ -19,8 +19,7 @@ function Card ({movie}){
 
 
 const CardStyled = styled.div`
- width: 400px;
- border: 1px solid #ccc;
+ width: 100%;
  margin-top: 50px;
  border-radius: 4px;
  overflow: hidden;
@@ -29,15 +28,17 @@ const CardStyled = styled.div`
 
  .body {
    padding: 20px;
-
+   background: #1F1A36;
 
    h3 {
      margin-bottom: 20px;
+     color: #fff;
    }
 
+ 
 
    p {
-     color: #666;
+     color: #7D7885;
      line-height: 1.5;
    }
  }

@@ -1,14 +1,18 @@
 import styled from '@emotion/styled'
 import { rem } from 'polished'
+import Navigation from './Navigation'
 
 
 function Header({isDark}) {
   return (
   <HeaderStyled isDark={isDark}>
     <div className="container">
-      <div className="logo">
-        <img src="/images/logo.svg" alt="Sites logo" />
-        <span className="logo-text">MovieJS</span>
+      <div className="flex justify-between items-center">
+        <div className="logo">
+          <img src="/images/logo.svg" alt="Sites logo" />
+          <span className="logo-text">MovieJS</span>
+        </div>
+        <Navigation/>
       </div>
     </div>
   </HeaderStyled>
@@ -16,7 +20,7 @@ function Header({isDark}) {
 }
 
 const HeaderStyled = styled.header`
-  background-color: ${props => props.isDark ? '#1e172e' : '#0a070f'};
+  background-color: ${props => props.isDark ? '#0a070f' : '#1e172e'};
   padding: ${rem(20)};
 
   .logo {
