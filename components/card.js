@@ -1,84 +1,74 @@
-import styled from '@emotion/styled'
-import Link from 'next/link'
+import styled from '@emotion/styled';
+import Link from 'next/link';
 
+function Card({ movie }) {
+  console.log(movie.poster.url);
+  const { API_URL } = process.env;
 
-function Card ({movie}){
-  const API = process.env.API_KEY
-
-
-  if(!movie.genre){
-    movie.genre = {}
-    movie.genre.slug = 'uncategorised'
+  if (!movie.genre) {
+    movie.genre = {};
+    movie.genre.slug = 'uncategorised';
   }
-
-  
 
   return (
     <CardStyled>
-      {movie.poster &&(
+      {movie.poster && (
         <div className="poster">
-          <img src={API + movie.poster.url} alt="" />
+          <img src={API_URL + movie.poster.url} alt={movie.title} />
         </div>
       )}
       <div className="body">
-         <h3>{movie.title}</h3>
+        <h3>{movie.title}</h3>
 
-         <p dangerouslySetInnerHTML={{__html: movie.description}}/>
+        <p dangerouslySetInnerHTML={{ __html: movie.description }} />
 
-         <Link href="/movies/[genre]/[slug]" as={`/movies/${movie.genre.slug}/${movie.slug}`}>
-            <a> More about this movie</a>
-         </Link>
+        <Link
+          href="/movies/[genre]/[slug]"
+          as={`/movies/${movie.genre.slug}/${movie.slug}`}
+        >
+          <a> More about this movie</a>
+        </Link>
       </div>
     </CardStyled>
-  )
+  );
 }
 
-
 const CardStyled = styled.div`
- width: 100%;
- margin-top: 50px;
- border-radius: 4px;
- overflow: hidden;
- box-shadow: 0 0 10px rgba(0,0,0,0.2);
+  width: 100%;
+  margin-top: 50px;
+  border-radius: 4px;
+  overflow: hidden;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
 
+  .body {
+    padding: 20px;
+    background: #1f1a36;
 
- .body {
-   padding: 20px;
-   background: #1F1A36;
+    h3 {
+      margin-bottom: 20px;
+      color: #fff;
+    }
 
-   h3 {
-     margin-bottom: 20px;
-     color: #fff;
-   }
+    p {
+      color: #7d7885;
+      line-height: 1.5;
+    }
 
- 
+    a {
+      display: inline-block;
+      margin: 20px 0;
+      background: #385db0;
+      padding: 1rem 2rem;
+      color: #fff;
+      font-weight: normal;
+      border-radius: 4px;
 
-   p {
-     color: #7D7885;
-     line-height: 1.5;
-   }
+      &:hover {
+        background-color: #f9bd44;
+        color: #1f1a36;
+      }
+    }
+  }
+`;
 
-   a {
-     display: inline-block;
-     margin: 20px 0;
-     background: #385db0;
-     padding: 1rem 2rem;
-     color: #fff;
-     font-weight: normal;
-     border-radius: 4px;
-
-     &:hover{
-       background-color: #f9bd44;
-       color: #1F1A36;
-     }
-   }
-
- }
-
-
-
-
-`
-
-
-export default Card
+export default Card;

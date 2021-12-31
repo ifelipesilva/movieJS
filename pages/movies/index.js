@@ -1,41 +1,28 @@
-import fetch from 'isomorphic-unfetch'
+import fetch from 'isomorphic-unfetch';
 
-
-function MoviesPage({movies}){
-  
+function MoviesPage({ movies }) {
   <div className="container">
-
     <ul>
-
-    {movies.map(movie => (
-                    <li key={movie.id}>
-                        <h3>{movie.movie_title}</h3>
-                    </li>
-                ))}
-
+      {movies.map((movie) => (
+        <li key={movie.id}>
+          <h3>{movie.movie_title}</h3>
+        </li>
+      ))}
     </ul>
-
-  </div>
-
-
-
+  </div>;
 }
 
+export async function getServerSideProps() {
+  const { API_URL } = process.env;
 
-export async function getServerSideProps(){
-  const API = process.env.API_KEY;
-
- 
-  const res = await fetch(`${API}/movies`)
-  const data = await res.json()
+  const res = await fetch(`${API_URL}/movies`);
+  const data = await res.json();
 
   return {
     props: {
-      movies: data
-    }
-  }
+      movies: data,
+    },
+  };
 }
 
-
-
-export default MoviesPage
+export default MoviesPage;
